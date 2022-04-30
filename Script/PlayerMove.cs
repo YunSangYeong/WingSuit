@@ -13,6 +13,11 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
     float swipeLength;
     float swipeHight;
+    public GameObject impect;
+
+    //아래 두줄 돌던지기 관련
+    public GameObject stoneFactory;
+    public GameObject FirePosition;
 
     void Start()
     {
@@ -55,8 +60,23 @@ public class PlayerMove : MonoBehaviour
 
         }
         this.lengthSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
-        this.hightSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
+        this.hightSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다 
+
+        //아래는 총알일 발사되는 스크립트
+
+        //##이부분에 if분에 &&를 써서 한번에 하나의 스톤만 던져지게 할것 ?? 버튼누르게 해서 발사하기??
+       
+            if (Input.GetMouseButtonUp(0)) //사용자가 발사버튼을 누르면.
+            {
+                GameObject stone = Instantiate(stoneFactory);//stoneFactory라는 프리팹을 인스턴스한것을 stone변수에 넣는다.
+
+                //스톤을 발사한다.(스톤을 스톤 발사위치로 가져다 둔다.)
+                stone.transform.position = FirePosition.transform.position;
+            }
+       
     }
+
+
     //아래 OnCollisionEnter2D매서드를 Updata안에 넣으니 오류가 나더라.
     private void OnCollisionEnter2D(Collision2D col) //콜리전과 충돌이 일어나면.
     {
@@ -64,8 +84,12 @@ public class PlayerMove : MonoBehaviour
         {
  //하이어라키창에있는 게임오브젝트중 이름이 "GmaeDirector"를 찾아서, GameObject타입의 director이라는변수에 할당해라
           GameObject director = GameObject.Find("GameDirector");
+
  //상기 director변수(즉GameDirctor이라는 오브젝트)에 있는 GameDirector라는 스크립트 컴포넌트의 DecresdeHP라는 메서드 
           director.GetComponent<GameDirector>().DecreaseHP();
+        
+        //충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
+        Instantiate(impect, this.transform.position, Quaternion.identity);
         }
     }
 }
