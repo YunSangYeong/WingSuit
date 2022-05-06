@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject stoneFactory;
 
     //??이부분을 고쳐서 돌이 오브젝트 중심에서 떨어지지 않고, 머리 부분에서 떨어지게 조정(17번줄 변수와 연계) 17번은 뒤에 추가한것.
-    public GameObject FirePosition;
+    public GameObject FirePosition; //이것 사용하지  않고, 쉽게하느것은 이 오브젝트의 축을 화살표로 마음에 드는 방향으로 이동 시키면 됨.
 
 
 
@@ -83,7 +83,7 @@ void Update()
 
         //아래는 총알이 발사되는 스크립트
 
-        //##이부분에 if분에 &&를 써서 한번에 하나의 스톤만 던져지게 할것 ?? 버튼누르게 해서 발사하기??
+        //##이부분에 if분에 &&를 써서 한번에 하나의 스톤만 던져지게 할것 ?? 버튼누르게 해서 발사하기?? 코루틴 사용? 1초 마다 발사?
        
             if (Input.GetMouseButtonDown(0)) //사용자가 발사버튼을 누르면.
             {
