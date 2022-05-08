@@ -16,7 +16,7 @@ public class AirpalneGenerator : MonoBehaviour
         {
             this.delta_air = 0;
             GameObject air = Instantiate(Airpalnefab);
-            int py_air = Random.Range(-4, 4);
+            float py_air = Random.Range(-4.67f, 4.63f);
             air.transform.position = new Vector3(-4, py_air, 0);
         }
     }

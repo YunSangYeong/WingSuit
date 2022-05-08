@@ -18,7 +18,7 @@ public class BirdGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(BirdPrefab);
-            int py = Random.Range(-4, 4);
+            float py = Random.Range(-4.67f, 4.63f);
             go.transform.position = new Vector3(4, py, 0);
         }
     }
