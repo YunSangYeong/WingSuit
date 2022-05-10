@@ -13,7 +13,9 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
     float swipeLength;
     float swipeHight;
-    public GameObject impect;
+    public GameObject impect; //새나 비행기에 맞았을때 애니
+    public GameObject crash;  //미사일에 맞았을 때 애니
+
     Vector2 playerObjectPositoin; //플레이어의 중심 좌표값
 
     //아래 두줄 돌던지기 관련
@@ -109,6 +111,19 @@ void Update()
         
         //충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
         Instantiate(impect, this.transform.position, Quaternion.identity);
+        }
+
+
+        if (col.gameObject.tag == "missle")  //충돌이 일어났는데 그 오브젝트 태그가 missle라면.....(현재는 프립팹에 붙여짐)
+        {
+            //하이어라키창에있는 게임오브젝트중 이름이 "GmaeDirector"를 찾아서, GameObject타입의 director이라는변수에 할당해라
+            GameObject director = GameObject.Find("GameDirector");
+
+            //상기 director변수(즉GameDirctor이라는 오브젝트)에 있는 GameDirector라는 스크립트 컴포넌트의 DecresdeHP라는 메서드 
+            director.GetComponent<GameDirector>().DecreaseHP();
+
+            //충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
+            Instantiate(crash, this.transform.position, Quaternion.identity);
         }
     }
 }

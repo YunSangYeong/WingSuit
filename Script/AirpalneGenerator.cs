@@ -8,7 +8,6 @@ public class AirpalneGenerator : MonoBehaviour
     public float span_air = 1.0f;
     float delta_air = 0;
 
-
     void Update()
     {
         this.delta_air += Time.deltaTime;

@@ -9,8 +9,6 @@ public class ballon_generator : MonoBehaviour
     public float span = 3.0f;
     float delta = 0;
 
-
-
     void Update()
     {
         this.delta += Time.deltaTime;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChaserGenerator : MonoBehaviour
 {
     public GameObject missle_Prefab;
-    public float span = 10.0f;
+    public float span = 3.0f;
     float delta = 0;
 
 
@@ -16,8 +16,8 @@ public class ChaserGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(missle_Prefab);
-            float px = Random.Range(-2.5f, 2.5f);
-            go.transform.position = new Vector3(px, 6, 0);
+            float px = Random.Range(-4.67f, 4.63f);
+            go.transform.position = new Vector3(px, -7, 0);
         }
     }
 }
