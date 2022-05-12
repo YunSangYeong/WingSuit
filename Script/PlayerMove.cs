@@ -80,8 +80,8 @@ void Update()
             this.animator.SetTrigger("Up Trigger");
 
         }
-        this.lengthSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
-        this.hightSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다 
+        this.lengthSpeed *= 0.97f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
+        this.hightSpeed *= 0.97f;  //감속 0.98을 나누어서 천천히 0이 되게 한다 
 
         //아래는 총알이 발사되는 스크립트
 

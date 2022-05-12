@@ -20,7 +20,7 @@ public class Chaser : MonoBehaviour
         target = GameObject.FindWithTag("Player");
 
         //아래 미사일 회전 관련 연구해 볼것
-        transform.rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+        //transform.rotation = Quaternion.LookRotation(target.transform.position - transform.position);
 
     }
 
@@ -33,7 +33,7 @@ public class Chaser : MonoBehaviour
     {
         dir = (target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        rotTarget = Quaternion.AngleAxis(angle, Vector3.zero); //이부분 zero로 바꾸니 유도탄 자세가 바르게 잡힘
+        rotTarget = Quaternion.AngleAxis(angle-90, Vector3.forward); //미사일이 옆으로 움직이는것은 angle-90 rhk Vector3.forward롤 해결함.
         transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, Time.deltaTime * rotSpeed);
         rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
     }

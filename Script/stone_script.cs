@@ -37,6 +37,11 @@ public class stone_script : MonoBehaviour
             //점수를 올린다. //Score라는 스크립트의 scre라는 변수에 1을 증감(++)시킨다. 즉, 콜라젼이 충돌이 일어날 때 마다. Score스크립트의 score변수를 증가시킨다.
             Score.score++;
 
+            if (Score.score > Score.bestscore)
+            {
+                Score.bestscore = Score.score;
+            }
+
             // 애니메이션을 작동시킨다. 
             Instantiate(smoke, this.transform.position, Quaternion.identity);
 
