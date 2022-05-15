@@ -7,8 +7,8 @@ using UnityEngine;
 public class Chaser : MonoBehaviour
 {
     GameObject target;
-    public GameObject crash_animation;
-    public float speed = 0.5f, rotSpeed = 10f;
+    //public GameObject crash_animation;
+    public float speed = 0.5f, rotSpeed = 0.5f;
 
     Quaternion rotTarget;
     Vector3 dir;
@@ -43,11 +43,6 @@ public class Chaser : MonoBehaviour
         {
             //미사일 오브젝트를 파괴하라.
             Destroy(this.gameObject);
-
-            //특유의 애니메이션 표현
-            Instantiate(crash_animation, transform.position, Quaternion.identity);
-
-            //이자리에 사운드 들어가는 무언가.
         }
     }
 }

@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     void Clamp() //Clamp라는 매서드
     {
         playerMoveLimit = transform.position;
-        playerMoveLimit.x = Mathf.Clamp(playerMoveLimit.x, -2.4f, 2.4f);
+        playerMoveLimit.x = Mathf.Clamp(playerMoveLimit.x, -2.2f, 2.2f);
         playerMoveLimit.y = Mathf.Clamp(playerMoveLimit.y, -4.4f, 4.4f);
         transform.position = new Vector2(playerMoveLimit.x, playerMoveLimit.y);
     }
@@ -80,8 +80,8 @@ void Update()
             this.animator.SetTrigger("Up Trigger");
 
         }
-        this.lengthSpeed *= 0.97f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
-        this.hightSpeed *= 0.97f;  //감속 0.98을 나누어서 천천히 0이 되게 한다 
+        this.lengthSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다
+        this.hightSpeed *= 0.98f;  //감속 0.98을 나누어서 천천히 0이 되게 한다 
 
         //아래는 총알이 발사되는 스크립트
 
@@ -106,11 +106,16 @@ void Update()
  //하이어라키창에있는 게임오브젝트중 이름이 "GmaeDirector"를 찾아서, GameObject타입의 director이라는변수에 할당해라
           GameObject director = GameObject.Find("GameDirector");
 
+
  //상기 director변수(즉GameDirctor이라는 오브젝트)에 있는 GameDirector라는 스크립트 컴포넌트의 DecresdeHP라는 메서드 
           director.GetComponent<GameDirector>().DecreaseHP();
-        
-        //충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
+  
+            
+//충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
         Instantiate(impect, this.transform.position, Quaternion.identity);
+
+            //충돌시 소리나는 부분
+            GetComponent<AudioSource>().Play();
         }
 
 
@@ -119,11 +124,17 @@ void Update()
             //하이어라키창에있는 게임오브젝트중 이름이 "GmaeDirector"를 찾아서, GameObject타입의 director이라는변수에 할당해라
             GameObject director = GameObject.Find("GameDirector");
 
+
             //상기 director변수(즉GameDirctor이라는 오브젝트)에 있는 GameDirector라는 스크립트 컴포넌트의 DecresdeHP라는 메서드 
             director.GetComponent<GameDirector>().DecreaseHP();
 
+
             //충돌시 폭발 애니매이션 프리팹을 불러서 재생하는 부분
+
             Instantiate(crash, this.transform.position, Quaternion.identity);
+
+            //충돌시 소리나는 부분
+            GetComponent<AudioSource>().Play();
         }
     }
 }

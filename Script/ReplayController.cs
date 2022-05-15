@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ReplayController : MonoBehaviour
 {
-    public void ChangeSceneButton()
+    public void ReplayGameButton()
     {
         SceneManager.LoadScene("Stage_1");
     }

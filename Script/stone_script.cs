@@ -12,7 +12,7 @@ public class stone_script : MonoBehaviour
     CameraShake Camera;
     public float vibratefortime = 1.0f;
 
-    private void Start()
+    void Start()
     {
         animator = GetComponent<Animator>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
@@ -23,6 +23,8 @@ public class stone_script : MonoBehaviour
         //transform.Translate(0, -0.03f, 0);
         //리기드바디를 써서 이부분은 주석 처리함. 따라서 프레임마다 돌이 떨어지는 로직이 아니라, 중력으로 돌이 낙하하는 로직임
 
+
+
         //화면밖으로 나가면 이 스톤 오브젝트를 소멸 시킨다.
         if (transform.position.y < -8.0f)
         {
@@ -30,13 +32,16 @@ public class stone_script : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) //콜리전과 충돌이 일어나면...
+    void OnCollisionEnter2D(Collision2D other) //다른 콜리전과 충돌이 일어나면...
     {
-        if (other.gameObject.tag == "Enemy")   //만약 충돌이 일어난 오브젝트에 Enemy태그가 붙어 있다면.
+        
+        if (other.gameObject.tag =="Enemy")   //만약 충돌이 일어난 오브젝트에 Enemy태그가 붙어 있다면.
         {
+
             //점수를 올린다. //Score라는 스크립트의 scre라는 변수에 1을 증감(++)시킨다. 즉, 콜라젼이 충돌이 일어날 때 마다. Score스크립트의 score변수를 증가시킨다.
             Score.score++;
 
+         
             if (Score.score > Score.bestscore)
             {
                 Score.bestscore = Score.score;
@@ -65,8 +70,10 @@ public class stone_script : MonoBehaviour
 
         if (other.gameObject.tag == "missle")   //만약 충돌이 일어난 오브젝트에 missle태그가 붙어 있다면.
         {
+
             //점수를 올린다. //Score라는 스크립트의 scre라는 변수에 1을 증감(++)시킨다. 즉, 콜라젼이 충돌이 일어날 때 마다. Score스크립트의 score변수를 증가시킨다.
             Score.score++;
+
 
             // 애니메이션을 작동시킨다. 
             Instantiate(smoke, this.transform.position, Quaternion.identity);
